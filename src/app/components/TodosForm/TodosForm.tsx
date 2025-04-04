@@ -1,7 +1,7 @@
 'use client';
-import {useState, useEffect, useRef} from 'react';
-import {ITodo} from '../../types/data';
-import {TodoList} from '../TodoList/TodoList';
+import { useState, useEffect, useRef } from 'react';
+import { ITodo } from '../../types/data';
+import { TodosList } from '../TodosList/TodosList';
 import styles from './TodosForm.module.css';
 
 export default function TodosForm() {
@@ -12,7 +12,7 @@ export default function TodosForm() {
 
   const addTodo = () => {
     if (value) {
-      setTodos([...todos, {id: Date.now(), title: value, completed: false}]);
+      setTodos([...todos, { id: Date.now(), title: value, completed: false }]);
       setValue('');
     }
   };
@@ -24,7 +24,7 @@ export default function TodosForm() {
   const toggleTodo = (id: number) => {
     setTodos(
       todos.map((todo) =>
-        todo.id === id ? {...todo, completed: !todo.completed} : todo
+        todo.id === id ? { ...todo, completed: !todo.completed } : todo
       )
     );
   };
@@ -45,11 +45,15 @@ export default function TodosForm() {
           ref={inputRef}
           onKeyDown={(e) => e.key === 'Enter' && addTodo()}
         />
-        <button className={styles.todos_form__button} onClick={addTodo}>
+        <button
+          className={styles.todos_form__button}
+          onClick={addTodo}
+          disabled={!value}
+          data-testid="inputButton">
           Add
         </button>
       </div>
-      <TodoList
+      <TodosList
         items={todos}
         removeCompletedTodos={removeCompletedTodos}
         toggleTodo={toggleTodo}

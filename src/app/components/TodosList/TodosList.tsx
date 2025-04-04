@@ -1,16 +1,16 @@
 'use client';
 import { FC, useState } from 'react';
 import { ITodo } from '../../types/data';
-import styles from './TodoList.module.css';
+import styles from './TodosList.module.css';
 import { TodoItem } from '../TodoItem/TodoItem';
 
-interface ITodoListProps {
+interface ITodosListProps {
   items: ITodo[];
   removeCompletedTodos: () => void;
   toggleTodo: (id: number) => void;
 }
 
-export const TodoList: FC<ITodoListProps> = (props) => {
+export const TodosList: FC<ITodosListProps> = (props) => {
   const { items, removeCompletedTodos, toggleTodo } = props;
   const [filter, setFilter] = useState('all');
 
