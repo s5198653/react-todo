@@ -10,7 +10,7 @@ export const TodoItem: FC<ITodoItemProps> = (props) => {
   const { id, title, completed, toggleTodo } = props;
 
   return (
-    <div className={styles.checkbox__wrapper}>
+    <div className={styles.checkbox__wrapper} data-testid="todoWrapper">
       <input
         type="checkbox"
         checked={completed}
@@ -19,7 +19,13 @@ export const TodoItem: FC<ITodoItemProps> = (props) => {
         id={`todo-${id}`}
       />
       <label htmlFor={`todo-${id}`} className={styles.checkbox__label}>
-        <span className={styles.checkbox__text}>{title}</span>
+        <span
+          className={`${styles.checkbox__text} ${
+            completed ? styles.checkbox__text__completed : ''
+          }`}
+          data-testid="todoText">
+          {title}
+        </span>
       </label>
     </div>
   );

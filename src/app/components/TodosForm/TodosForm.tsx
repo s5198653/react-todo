@@ -35,7 +35,9 @@ export default function TodosForm() {
 
   return (
     <div className={styles.todos_form}>
-      <div className={styles.todos_form__input_wrapper}>
+      <div
+        className={styles.todos_form__input_wrapper}
+        data-testid="addsButtonWrapper">
         <input
           className={styles.todos_form__input}
           type="text"
@@ -49,7 +51,7 @@ export default function TodosForm() {
           className={styles.todos_form__button}
           onClick={addTodo}
           disabled={!value}
-          data-testid="inputButton">
+          data-testid="addsButton">
           Add
         </button>
       </div>

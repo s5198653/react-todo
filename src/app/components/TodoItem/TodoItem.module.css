@@ -35,7 +35,7 @@
   color: var(--foreground);
 }
 
-.checkbox__control:checked + .checkbox__label .checkbox__text {
+.checkbox__text__completed {
   text-decoration: line-through;
 }
 

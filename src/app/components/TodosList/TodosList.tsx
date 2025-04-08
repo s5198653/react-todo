@@ -14,7 +14,7 @@ export const TodosList: FC<ITodosListProps> = (props) => {
   const { items, removeCompletedTodos, toggleTodo } = props;
   const [filter, setFilter] = useState('all');
 
-  const notCompletedCount = items.filter((todo) => !todo.completed).length;
+  const notCompletedCount = items?.filter((todo) => !todo.completed).length;
 
   const filteredItems = () => {
     switch (filter) {
@@ -30,11 +30,14 @@ export const TodosList: FC<ITodosListProps> = (props) => {
   };
 
   return (
-    <div className={styles.todos_list}>
+    <div className={styles.todos_list} data-testid="todosList">
       <h2 className={styles.todos_list__header}>What needs to be done?</h2>
       <ul className={styles.todos_list__list}>
-        {filteredItems().map((todo) => (
-          <li className={styles.todos_list__item} key={todo.id}>
+        {filteredItems()?.map((todo) => (
+          <li
+            className={styles.todos_list__item}
+            key={todo.id}
+            data-testid="todo-item">
             <TodoItem toggleTodo={toggleTodo} {...todo} />
           </li>
         ))}
